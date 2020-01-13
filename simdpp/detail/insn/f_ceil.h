@@ -83,10 +83,10 @@ static SIMDPP_INL
 	float32<16>
 	i_ceil(const float32<16>& a)
 {
-#ifdef SIMDPP_USE_SVML
+#if SIMDPP_USE_SVML
 	return _mm512_ceil_ps(a.native());
 #else
-	return _mm512_roundscale_round_ps(a.native(), 0, (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
+	return _mm512_roundscale_ps(a.native(), (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif
@@ -161,10 +161,10 @@ static SIMDPP_INL
 	float64<8>
 	i_ceil(const float64<8>& a)
 {
-#ifdef SIMDPP_USE_SVML
+#if SIMDPP_USE_SVML
 	return _mm512_ceil_pd(a.native());
 #else
-	return _mm512_roundscale_round_pd(a.native(), 0, (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
+	return _mm512_roundscale_pd(a.native(), (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif
