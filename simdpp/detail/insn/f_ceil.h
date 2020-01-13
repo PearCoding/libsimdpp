@@ -86,7 +86,7 @@ static SIMDPP_INL
 #ifdef SIMDPP_USE_SVML
 	return _mm512_ceil_ps(a.native());
 #else
-	return _mm512_roundscale_round_ps(a.native(), 0, _MM_FROUND_CEIL);
+	return _mm512_roundscale_round_ps(a.native(), 0, (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif
@@ -164,7 +164,7 @@ static SIMDPP_INL
 #ifdef SIMDPP_USE_SVML
 	return _mm512_ceil_pd(a.native());
 #else
-	return _mm512_roundscale_round_pd(a.native(), 0, _MM_FROUND_CEIL);
+	return _mm512_roundscale_round_pd(a.native(), 0, (_MM_FROUND_TO_POS_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif

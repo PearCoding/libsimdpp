@@ -80,7 +80,7 @@ float32<16> i_floor(const float32<16>& a)
 #ifdef SIMDPP_USE_SVML
 	return _mm512_floor_ps(a.native());
 #else
-	return _mm512_roundscale_round_ps(a.native(), 0, _MM_FROUND_FLOOR);
+	return _mm512_roundscale_round_ps(a.native(), 0, (_MM_FROUND_TO_NEG_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif
@@ -155,7 +155,7 @@ float64<8> i_floor(const float64<8>& a)
 #ifdef SIMDPP_USE_SVML
 	return _mm512_floor_pd(a.native());
 #else
-	return _mm512_roundscale_round_pd(a.native(), 0, _MM_FROUND_FLOOR);
+	return _mm512_roundscale_round_pd(a.native(), 0, (_MM_FROUND_TO_NEG_INF | _MM_FROUND_NO_EXC));
 #endif
 }
 #endif
