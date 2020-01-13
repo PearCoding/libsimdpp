@@ -77,7 +77,11 @@ float32x8 i_floor(const float32x8& a)
 static SIMDPP_INL
 float32<16> i_floor(const float32<16>& a)
 {
-    return _mm512_floor_ps(a.native());
+#ifdef SIMDPP_USE_SVML
+	return _mm512_floor_ps(a.native());
+#else
+	return _mm512_roundscale_round_ps(a.native(), 0, _MM_FROUND_FLOOR);
+#endif
 }
 #endif
 
@@ -148,7 +152,11 @@ float64x4 i_floor(const float64x4& a)
 static SIMDPP_INL
 float64<8> i_floor(const float64<8>& a)
 {
-    return _mm512_floor_pd(a.native());
+#ifdef SIMDPP_USE_SVML
+	return _mm512_floor_pd(a.native());
+#else
+	return _mm512_roundscale_round_pd(a.native(), 0, _MM_FROUND_FLOOR);
+#endif
 }
 #endif
 
